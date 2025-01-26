@@ -18,12 +18,20 @@ const suggestions = [
   "How to move on after breakup?",
 ];
 
+const breakupResponses = [
+  "I understand this is a difficult time. Moving on after a breakup takes time and patience.",
+  "Here are some helpful steps to heal:\n1. Allow yourself to feel your emotions\n2. Focus on self-care and personal growth\n3. Spend time with supportive friends and family\n4. Develop new hobbies or interests\n5. Consider professional help if needed",
+  "Remember that healing isn't linear - some days will be better than others, and that's okay.",
+  "Would you like to discuss any specific aspect of moving on that you're struggling with?"
+];
+
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([
     { text: "Hi! I'm your relationship advisor. How can I help you today?", isBot: true },
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [currentBreakupResponse, setCurrentBreakupResponse] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState(0);
 
@@ -52,15 +60,28 @@ const Index = () => {
     setInput("");
     setIsTyping(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse = {
-        text: "Thank you for sharing. I understand relationships can be complex. Would you like to explore this topic further?",
-        isBot: true,
-      };
-      setMessages((prev) => [...prev, botResponse]);
-      setIsTyping(false);
-    }, 1500);
+    // Handle breakup-related messages
+    if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
+      setTimeout(() => {
+        const response = {
+          text: breakupResponses[currentBreakupResponse],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setCurrentBreakupResponse((prev) => (prev + 1) % breakupResponses.length);
+        setIsTyping(false);
+      }, 1500);
+    } else {
+      // Default response for other messages
+      setTimeout(() => {
+        const botResponse = {
+          text: "Thank you for sharing. I understand relationships can be complex. Would you like to explore this topic further?",
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, botResponse]);
+        setIsTyping(false);
+      }, 1500);
+    }
   };
 
   return (
