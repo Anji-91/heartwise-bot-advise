@@ -33,10 +33,35 @@ const soulMateResponses = [
 ];
 
 const communicationResponses = [
-  "Effective communication is the foundation of any strong relationship. Here are some key strategies:",
-  "Important tips:\n1. Practice active listening without interrupting\n2. Use 'I' statements to express feelings\n3. Choose the right time and place for important discussions\n4. Be honest but kind in your approach\n5. Acknowledge and validate your partner's feelings",
-  "Regular check-ins and creating a safe space for open dialogue can strengthen your bond.",
-  "Would you like to discuss specific communication challenges you're facing?"
+  "Let me help you improve your relationship communication. Here are some proven strategies:",
+  `Here are essential communication techniques that can transform your relationship:
+
+1. Practice Active Listening
+   - Give your full attention when your partner speaks
+   - Maintain eye contact and put away distractions
+   - Nod and use verbal cues to show you're engaged
+
+2. Use "I" Statements
+   - Instead of "You never listen," try "I feel unheard when..."
+   - Express feelings without blame
+   - Share your perspective clearly
+
+3. Choose the Right Time and Setting
+   - Pick a calm moment for important discussions
+   - Ensure privacy and minimize distractions
+   - Set aside dedicated time for conversations
+
+4. Show Empathy and Validation
+   - Acknowledge your partner's feelings
+   - Try to understand their perspective
+   - Show that their feelings matter to you
+
+5. Practice Non-Verbal Communication
+   - Be mindful of your body language
+   - Match your facial expressions to your words
+   - Use appropriate gestures and tone`,
+  "Would you like to explore any specific communication technique in more detail?",
+  "Remember, good communication takes practice. Which of these areas would you like to work on first?"
 ];
 
 const trustResponses = [
