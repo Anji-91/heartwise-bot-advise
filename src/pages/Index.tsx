@@ -25,6 +25,27 @@ const breakupResponses = [
   "Would you like to discuss any specific aspect of moving on that you're struggling with?"
 ];
 
+const soulMateResponses = [
+  "Recognizing 'the one' often involves multiple aspects of your relationship:",
+  "Key signs include:\n1. You can be completely yourself around them\n2. You share similar values and life goals\n3. You communicate effectively, even during disagreements\n4. You support each other's growth and independence\n5. You feel secure and trusted in the relationship",
+  "Remember that healthy relationships require ongoing effort and growth from both partners.",
+  "Would you like to explore any specific aspects of your relationship that you're unsure about?"
+];
+
+const communicationResponses = [
+  "Effective communication is the foundation of any strong relationship. Here are some key strategies:",
+  "Important tips:\n1. Practice active listening without interrupting\n2. Use 'I' statements to express feelings\n3. Choose the right time and place for important discussions\n4. Be honest but kind in your approach\n5. Acknowledge and validate your partner's feelings",
+  "Regular check-ins and creating a safe space for open dialogue can strengthen your bond.",
+  "Would you like to discuss specific communication challenges you're facing?"
+];
+
+const trustResponses = [
+  "Trust issues can be challenging but they can be worked through with patience and commitment.",
+  "Here are some ways to build trust:\n1. Be consistent in your words and actions\n2. Practice open and honest communication\n3. Respect boundaries and agreements\n4. Take responsibility for mistakes\n5. Seek professional help if needed",
+  "Building trust takes time, and it's okay to take small steps forward.",
+  "Would you like to explore specific trust concerns in your relationship?"
+];
+
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([
     { text: "Hi! I'm your relationship advisor. How can I help you today?", isBot: true },
@@ -32,6 +53,9 @@ const Index = () => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [currentBreakupResponse, setCurrentBreakupResponse] = useState(0);
+  const [currentSoulMateResponse, setCurrentSoulMateResponse] = useState(0);
+  const [currentCommunicationResponse, setCurrentCommunicationResponse] = useState(0);
+  const [currentTrustResponse, setCurrentTrustResponse] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [parallaxOffset, setParallaxOffset] = useState(0);
 
@@ -60,7 +84,7 @@ const Index = () => {
     setInput("");
     setIsTyping(true);
 
-    // Handle breakup-related messages
+    // Handle different types of messages
     if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
       setTimeout(() => {
         const response = {
@@ -69,6 +93,36 @@ const Index = () => {
         };
         setMessages((prev) => [...prev, response]);
         setCurrentBreakupResponse((prev) => (prev + 1) % breakupResponses.length);
+        setIsTyping(false);
+      }, 1500);
+    } else if (text.toLowerCase().includes("the one") || text === "How do I know if they're the one?") {
+      setTimeout(() => {
+        const response = {
+          text: soulMateResponses[currentSoulMateResponse],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setCurrentSoulMateResponse((prev) => (prev + 1) % soulMateResponses.length);
+        setIsTyping(false);
+      }, 1500);
+    } else if (text.toLowerCase().includes("communication") || text === "How to improve communication?") {
+      setTimeout(() => {
+        const response = {
+          text: communicationResponses[currentCommunicationResponse],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setCurrentCommunicationResponse((prev) => (prev + 1) % communicationResponses.length);
+        setIsTyping(false);
+      }, 1500);
+    } else if (text.toLowerCase().includes("trust") || text === "Dealing with trust issues") {
+      setTimeout(() => {
+        const response = {
+          text: trustResponses[currentTrustResponse],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setCurrentTrustResponse((prev) => (prev + 1) % trustResponses.length);
         setIsTyping(false);
       }, 1500);
     } else {
