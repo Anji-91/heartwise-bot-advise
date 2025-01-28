@@ -18,6 +18,17 @@ const suggestions = [
   "How to move on after breakup?",
 ];
 
+const initialMessages = [
+  { 
+    text: "Hey there! 👋 I'm your friendly relationship advisor. I'm here to chat and help you navigate through your relationship journey!", 
+    isBot: true 
+  },
+  { 
+    text: "Before we dive in, how are you feeling today? Feel free to share what's on your mind, or you can choose from some common topics below.", 
+    isBot: true 
+  }
+];
+
 const breakupResponses = [
   "I understand this is a difficult time. Moving on after a breakup takes time and patience.",
   "Here are some helpful steps to heal:\n1. Allow yourself to feel your emotions\n2. Focus on self-care and personal growth\n3. Spend time with supportive friends and family\n4. Develop new hobbies or interests\n5. Consider professional help if needed",
@@ -117,9 +128,7 @@ const trustResponses = [
 ];
 
 const Index = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    { text: "Hi! I'm your relationship advisor. How can I help you today?", isBot: true },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [currentBreakupResponse, setCurrentBreakupResponse] = useState(0);
@@ -154,8 +163,20 @@ const Index = () => {
     setInput("");
     setIsTyping(true);
 
+    // Add empathetic acknowledgment before specific responses
+    const addAcknowledgment = () => {
+      setTimeout(() => {
+        const acknowledgment = {
+          text: "I understand how important this is to you. Let me share some helpful insights about this.",
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, acknowledgment]);
+      }, 1000);
+    };
+
     // Handle different types of messages
     if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
+      addAcknowledgment();
       setTimeout(() => {
         const response = {
           text: breakupResponses[currentBreakupResponse],
@@ -164,8 +185,9 @@ const Index = () => {
         setMessages((prev) => [...prev, response]);
         setCurrentBreakupResponse((prev) => (prev + 1) % breakupResponses.length);
         setIsTyping(false);
-      }, 1500);
+      }, 2500);
     } else if (text.toLowerCase().includes("the one") || text === "How do I know if they're the one?") {
+      addAcknowledgment();
       setTimeout(() => {
         const response = {
           text: soulMateResponses[currentSoulMateResponse],
@@ -174,8 +196,9 @@ const Index = () => {
         setMessages((prev) => [...prev, response]);
         setCurrentSoulMateResponse((prev) => (prev + 1) % soulMateResponses.length);
         setIsTyping(false);
-      }, 1500);
+      }, 2500);
     } else if (text.toLowerCase().includes("communication") || text === "How to improve communication?") {
+      addAcknowledgment();
       setTimeout(() => {
         const response = {
           text: communicationResponses[currentCommunicationResponse],
@@ -184,8 +207,9 @@ const Index = () => {
         setMessages((prev) => [...prev, response]);
         setCurrentCommunicationResponse((prev) => (prev + 1) % communicationResponses.length);
         setIsTyping(false);
-      }, 1500);
+      }, 2500);
     } else if (text.toLowerCase().includes("trust") || text === "Dealing with trust issues") {
+      addAcknowledgment();
       setTimeout(() => {
         const response = {
           text: trustResponses[currentTrustResponse],
@@ -194,12 +218,12 @@ const Index = () => {
         setMessages((prev) => [...prev, response]);
         setCurrentTrustResponse((prev) => (prev + 1) % trustResponses.length);
         setIsTyping(false);
-      }, 1500);
+      }, 2500);
     } else {
-      // Default response for other messages
+      // More conversational default response
       setTimeout(() => {
         const botResponse = {
-          text: "Thank you for sharing. I understand relationships can be complex. Would you like to explore this topic further?",
+          text: "I hear you. Relationships can be complex and every situation is unique. Would you like to tell me more about what you're experiencing? Or we can explore one of the topics I mentioned above.",
           isBot: true,
         };
         setMessages((prev) => [...prev, botResponse]);
