@@ -15,10 +15,10 @@ const ChatMessage = ({ message, isBot }: ChatMessageProps) => {
     >
       <div
         className={cn(
-          "max-w-[80%] rounded-2xl px-4 py-2 shadow-sm",
+          "max-w-[80%] rounded-2xl px-4 py-2 shadow-sm transition-all duration-200 hover:shadow-md",
           isBot
-            ? "bg-white text-gray-800 rounded-tl-none"
-            : "bg-purple-100 text-gray-800 rounded-tr-none"
+            ? "bg-white text-gray-800 rounded-tl-none border border-purple-100"
+            : "bg-purple-500 text-white rounded-tr-none"
         )}
       >
         {message}

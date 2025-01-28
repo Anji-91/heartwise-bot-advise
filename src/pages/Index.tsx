@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send } from "lucide-react";
+import { Send, Sparkles } from "lucide-react";
 import ChatMessage from "@/components/ChatMessage";
 import SuggestionChip from "@/components/SuggestionChip";
 import TypingIndicator from "@/components/TypingIndicator";
@@ -314,14 +314,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50 relative overflow-hidden">
-      <div
-        className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDIzOSwgMjQ2LCAyNTUsIDAuNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDIzOSwgMjQ2LCAyNTUsIDAuNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30" 
+        style={{ transform: `translateY(${parallaxOffset}px)` }} 
       />
+      
       <div className="container max-w-2xl mx-auto p-4 relative">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 mb-4">
-          <div className="flex flex-wrap gap-2 mb-4">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg p-6 mb-4">
+          {/* Header */}
+          <div className="flex items-center justify-center mb-6 space-x-2">
+            <Sparkles className="w-6 h-6 text-purple-500" />
+            <h1 className="text-2xl font-semibold text-gray-800">HeartWise Chat</h1>
+          </div>
+
+          {/* Suggestions */}
+          <div className="flex flex-wrap gap-2 mb-6">
             {suggestions.map((suggestion) => (
               <SuggestionChip
                 key={suggestion}
@@ -330,7 +338,9 @@ const Index = () => {
               />
             ))}
           </div>
-          <div className="space-y-4 mb-4 max-h-[60vh] overflow-y-auto">
+
+          {/* Chat messages */}
+          <div className="space-y-4 mb-6 max-h-[60vh] overflow-y-auto scrollbar-hide rounded-2xl bg-white/50 p-4">
             {messages.map((message, index) => (
               <ChatMessage
                 key={index}
@@ -341,15 +351,20 @@ const Index = () => {
             {isTyping && <TypingIndicator />}
             <div ref={messagesEndRef} />
           </div>
+
+          {/* Input area */}
           <div className="flex gap-2">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message..."
-              className="flex-1"
+              placeholder="Share your thoughts..."
+              className="flex-1 rounded-full bg-white/80 border-purple-100 focus:border-purple-300 focus:ring-purple-200"
               onKeyPress={(e) => e.key === "Enter" && handleSend(input)}
             />
-            <Button onClick={() => handleSend(input)}>
+            <Button 
+              onClick={() => handleSend(input)}
+              className="rounded-full bg-purple-500 hover:bg-purple-600 transition-colors"
+            >
               <Send className="h-4 w-4" />
             </Button>
           </div>
