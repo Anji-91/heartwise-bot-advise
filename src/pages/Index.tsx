@@ -16,6 +16,10 @@ const suggestions = [
   "How to improve communication?",
   "Dealing with trust issues",
   "How to move on after breakup?",
+  "Feeling lonely in relationship",
+  "Managing relationship anxiety",
+  "Setting healthy boundaries",
+  "Building emotional intimacy"
 ];
 
 const initialMessages = [
@@ -33,14 +37,19 @@ const breakupResponses = [
   "I understand this is a difficult time. Moving on after a breakup takes time and patience.",
   "Here are some helpful steps to heal:\n1. Allow yourself to feel your emotions\n2. Focus on self-care and personal growth\n3. Spend time with supportive friends and family\n4. Develop new hobbies or interests\n5. Consider professional help if needed",
   "Remember that healing isn't linear - some days will be better than others, and that's okay.",
-  "Would you like to discuss any specific aspect of moving on that you're struggling with?"
+  "Would you like to discuss any specific aspect of moving on that you're struggling with?",
+  "Remember that self-care is crucial during this time. Try activities like:\n1. Journaling your feelings\n2. Exercise and physical activity\n3. Meditation or mindfulness practices\n4. Creative expression through art or music\n5. Learning a new skill or hobby",
+  "It's normal to experience a range of emotions after a breakup. Give yourself permission to feel without judgment.",
+  "Consider this as an opportunity for self-discovery and growth. What would you like to learn about yourself during this healing journey?"
 ];
 
 const soulMateResponses = [
   "Recognizing 'the one' often involves multiple aspects of your relationship:",
   "Key signs include:\n1. You can be completely yourself around them\n2. You share similar values and life goals\n3. You communicate effectively, even during disagreements\n4. You support each other's growth and independence\n5. You feel secure and trusted in the relationship",
   "Remember that healthy relationships require ongoing effort and growth from both partners.",
-  "Would you like to explore any specific aspects of your relationship that you're unsure about?"
+  "Would you like to explore any specific aspects of your relationship that you're unsure about?",
+  "A healthy relationship should enhance your life, not complete it. Look for someone who:\n1. Respects your independence\n2. Celebrates your achievements\n3. Supports your personal growth\n4. Shares your sense of humor\n5. Makes you feel safe being vulnerable",
+  "Pay attention to how you feel around them. Do you feel:\n- Accepted for who you are?\n- Free to express your thoughts?\n- Respected in your decisions?\n- Supported in your goals?\n- Safe and secure?",
 ];
 
 const communicationResponses = [
@@ -124,7 +133,9 @@ const trustResponses = [
   "Trust issues can be challenging but they can be worked through with patience and commitment.",
   "Here are some ways to build trust:\n1. Be consistent in your words and actions\n2. Practice open and honest communication\n3. Respect boundaries and agreements\n4. Take responsibility for mistakes\n5. Seek professional help if needed",
   "Building trust takes time, and it's okay to take small steps forward.",
-  "Would you like to explore specific trust concerns in your relationship?"
+  "Would you like to explore specific trust concerns in your relationship?",
+  "Building trust is like building a bridge - it takes time, patience, and consistent effort from both sides.",
+  "Consider these trust-building exercises:\n1. Share daily appreciation\n2. Practice active listening\n3. Keep small promises consistently\n4. Share fears and vulnerabilities\n5. Respect each other's boundaries",
 ];
 
 const negativeEmotionResponses = [
@@ -133,6 +144,25 @@ const negativeEmotionResponses = [
   "I understand that difficult emotions can be overwhelming. Would you like to share what's making you feel this way? Together, we can explore ways to help you feel better.",
   "Thank you for being honest about your feelings. Everyone goes through tough times, and it's okay to not be okay. Would you like to tell me more about what's bothering you?",
   "I hear you, and I want you to know that your feelings are valid. Sometimes relationships can bring up challenging emotions. Would you like to explore what's causing these feelings?",
+];
+
+const anxietyResponses = [
+  "I understand relationship anxiety can be overwhelming. Let's explore what triggers these feelings.",
+  "Here are some ways to manage relationship anxiety:\n1. Practice self-soothing techniques\n2. Communicate your fears with your partner\n3. Challenge negative thought patterns\n4. Focus on the present moment\n5. Seek professional support if needed",
+  "Remember that having anxiety doesn't mean there's something wrong with your relationship. It's a common experience that can be managed.",
+  "Would you like to explore specific anxiety triggers or coping strategies?"
+];
+
+const lonelinessResponses = [
+  "Feeling lonely in a relationship can be particularly challenging. Your feelings are valid.",
+  "Consider these steps to address loneliness:\n1. Express your needs clearly to your partner\n2. Develop your own interests and friendships\n3. Plan quality time together\n4. Create meaningful rituals\n5. Share your inner world with your partner",
+  "Sometimes loneliness can signal a need for deeper emotional connection. Would you like to explore ways to build that?",
+];
+
+const boundaryResponses = [
+  "Setting healthy boundaries is crucial for any relationship. It shows self-respect and respect for your partner.",
+  "Here's how to set and maintain boundaries:\n1. Identify your needs and limits\n2. Communicate them clearly and calmly\n3. Be consistent in enforcing them\n4. Respect your partner's boundaries too\n5. Adjust boundaries as needed",
+  "Would you like to discuss specific boundaries you'd like to set in your relationship?"
 ];
 
 const Index = () => {
@@ -196,6 +226,36 @@ const Index = () => {
         setMessages((prev) => [...prev, response]);
         setIsTyping(false);
       }, 1500);
+    } else if (text.toLowerCase().includes("anxiety") || text.toLowerCase().includes("anxious")) {
+      addAcknowledgment();
+      setTimeout(() => {
+        const response = {
+          text: anxietyResponses[Math.floor(Math.random() * anxietyResponses.length)],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setIsTyping(false);
+      }, 2500);
+    } else if (text.toLowerCase().includes("lonely") || text.toLowerCase().includes("alone")) {
+      addAcknowledgment();
+      setTimeout(() => {
+        const response = {
+          text: lonelinessResponses[Math.floor(Math.random() * lonelinessResponses.length)],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setIsTyping(false);
+      }, 2500);
+    } else if (text.toLowerCase().includes("boundary") || text.toLowerCase().includes("boundaries")) {
+      addAcknowledgment();
+      setTimeout(() => {
+        const response = {
+          text: boundaryResponses[Math.floor(Math.random() * boundaryResponses.length)],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setIsTyping(false);
+      }, 2500);
     } else if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
       addAcknowledgment();
       setTimeout(() => {
