@@ -40,28 +40,73 @@ const communicationResponses = [
    - Give your full attention when your partner speaks
    - Maintain eye contact and put away distractions
    - Nod and use verbal cues to show you're engaged
+   - Reflect back what you've heard to ensure understanding
+   - Wait until they finish before responding
 
 2. Use "I" Statements
    - Instead of "You never listen," try "I feel unheard when..."
    - Express feelings without blame
    - Share your perspective clearly
+   - Focus on specific situations rather than generalizations
+   - Take responsibility for your own emotions
 
 3. Choose the Right Time and Setting
    - Pick a calm moment for important discussions
    - Ensure privacy and minimize distractions
    - Set aside dedicated time for conversations
+   - Consider your partner's schedule and energy levels
+   - Create a comfortable environment for both parties
 
 4. Show Empathy and Validation
    - Acknowledge your partner's feelings
    - Try to understand their perspective
    - Show that their feelings matter to you
+   - Use phrases like "That must be difficult" or "I understand why you feel that way"
+   - Avoid dismissing or minimizing their emotions
 
 5. Practice Non-Verbal Communication
    - Be mindful of your body language
    - Match your facial expressions to your words
-   - Use appropriate gestures and tone`,
+   - Use appropriate gestures and tone
+   - Maintain an open posture
+   - Pay attention to your partner's non-verbal cues
+
+6. Handle Conflict Constructively
+   - Stay focused on the current issue
+   - Avoid bringing up past grievances
+   - Take breaks if emotions run high
+   - Look for compromise and win-win solutions
+   - Focus on the problem, not the person
+
+7. Regular Check-ins
+   - Schedule weekly relationship check-ins
+   - Share appreciation and gratitude
+   - Discuss goals and future plans
+   - Address small issues before they grow
+   - Celebrate progress and improvements`,
   "Would you like to explore any specific communication technique in more detail?",
-  "Remember, good communication takes practice. Which of these areas would you like to work on first?"
+  "Remember, good communication takes practice. Which of these areas would you like to work on first?",
+  `Here are some common communication pitfalls to avoid:
+
+1. Criticism vs. Complaints
+   - Criticism attacks character
+   - Complaints address specific behaviors
+   - Learn to express needs constructively
+
+2. Defensiveness
+   - Listen without immediately defending
+   - Take responsibility where appropriate
+   - Focus on understanding before responding
+
+3. Stonewalling
+   - Recognize when you're overwhelmed
+   - Take healthy breaks (20-30 minutes)
+   - Return to the conversation when calm
+
+4. Contempt
+   - Avoid sarcasm and mockery
+   - Build a culture of respect
+   - Focus on appreciation`
 ];
 
 const trustResponses = [
