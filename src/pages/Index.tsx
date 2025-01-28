@@ -127,6 +127,14 @@ const trustResponses = [
   "Would you like to explore specific trust concerns in your relationship?"
 ];
 
+const negativeEmotionResponses = [
+  "I'm sorry to hear that you're feeling bad. Would you like to talk about what's troubling you? Sometimes sharing our feelings can be the first step towards feeling better.",
+  "It takes courage to acknowledge when we're not feeling our best. I'm here to listen and support you through this. What's been on your mind?",
+  "I understand that difficult emotions can be overwhelming. Would you like to share what's making you feel this way? Together, we can explore ways to help you feel better.",
+  "Thank you for being honest about your feelings. Everyone goes through tough times, and it's okay to not be okay. Would you like to tell me more about what's bothering you?",
+  "I hear you, and I want you to know that your feelings are valid. Sometimes relationships can bring up challenging emotions. Would you like to explore what's causing these feelings?",
+];
+
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
@@ -175,7 +183,20 @@ const Index = () => {
     };
 
     // Handle different types of messages
-    if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
+    if (text.toLowerCase().includes("bad") || 
+        text.toLowerCase().includes("sad") || 
+        text.toLowerCase().includes("hurt") || 
+        text.toLowerCase().includes("upset")) {
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * negativeEmotionResponses.length);
+        const response = {
+          text: negativeEmotionResponses[randomIndex],
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, response]);
+        setIsTyping(false);
+      }, 1500);
+    } else if (text.toLowerCase().includes("breakup") || text === "How to move on after breakup?") {
       addAcknowledgment();
       setTimeout(() => {
         const response = {
